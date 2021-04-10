@@ -1,10 +1,8 @@
 #version 330
-in vec3 inPosition; // inputs from the vertex buffer
-in vec3 inNormal;
+in vec3 inPosition;
 in vec2 inTextureCoordinates;
 out vec2 texCoord;
-uniform mat4 mat; // variable constant for all vertices in a single draw
-
+uniform mat4 mat;
 const float PI = 3.1415926535897932384626433832795;
 
 void main() {
