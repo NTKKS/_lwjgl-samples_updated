@@ -75,7 +75,7 @@ public class HelloWorld {
 		glfwWindowHint(GLFW_RESIZABLE, GLFW_TRUE); // the window will be resizable
 
 		// Create the window
-		window = glfwCreateWindow(300, 300, "Hello World!", NULL, NULL);
+		window = glfwCreateWindow(500, 500, "Hello World!", NULL, NULL);
 		if ( window == NULL )
 			throw new RuntimeException("Failed to create the GLFW window");
 
@@ -220,7 +220,7 @@ public class HelloWorld {
 
 		createBuffers();
 		
-		shaderProgram = ShaderUtils.loadProgram("/lvl1basic/p02geometry/p01cube/simple");
+		shaderProgram = ShaderUtils.loadProgram("/lvl1basic/p02geometry/p02strip/simple");
 		
 		glUseProgram(this.shaderProgram);
 		
@@ -239,17 +239,29 @@ public class HelloWorld {
 	void createBuffers() {
 		float[] strip = {
 				// first triangle
-				1, 0, 0, 0, 0, -1, 0, 0, 0, 0, 0, -1, 1, 1, 0, 0, 0, -1,
+				1, 0, 0,	0, 0, -1,
+				0, 0, 0,	0, 0, -1,
+				1, 1, 0,	0, 0, -1,
 				// second triangle
-				0, 0, 0, 0, -1, 0, 1, 1, 0, 0, -1, 0, 0, 1, 0, 0, -1, 0,
-				// 3st triangle
-				1, 1, 0, -1, 0, 0, 0, 1, 0, -1, 0, 0, 1, 2, 0, -1, 0, 0,
+				0, 0, 0,	0, -1, 0,
+				1, 1, 0,	0, -1, 0,
+				0, 1, 0,	0, -1, 0,
+				// third triangle
+				1, 1, 0,	-1, 0, 0,
+				0, 1, 0,	-1, 0, 0,
+				1, 2, 0,	-1, 0, 0,
 				// 4th triangle
-				0, 1, 0, 0, 1, 0, 1, 2, 0, 0, 1, 0, 0, 2, 0, 0, 1, 0,
+				0, 1, 0,	0, 1, 0,
+				1, 2, 0,	0, 1, 0,
+				0, 2, 0,	0, 1, 0,
 				// 5th triangle
-				1, 2, 0, 0, 0, 1, 0, 2, 0, 0, 0, 1, 1, 3, 0, 0, 0, 1,
+				1, 2, 0,	0, 0, 1,
+				0, 2, 0,	0, 0, 1,
+				1, 3, 0,	0, 0, 1,
 				// 6th triangle
-				0, 2, 0, 1, 0, 0, 1, 3, 0, 1, 0, 0, 0, 3, 0, 1, 1, 1,
+				0, 2, 0,	1, 0, 0,
+				1, 3, 0,	1, 0, 0,
+				0, 3, 0,	1, 0, 0,
 
 		};
 
@@ -269,6 +281,7 @@ public class HelloWorld {
 		buffers2 = new OGLBuffers(strip, attributes, indexBufferData);
 
 		int[] indexBufferData2 = { 0, 1, 2, 5, 8, 11, 14, 17 };
+
 		// create geometry with index buffer as the triangle strip
 		buffers3 = new OGLBuffers(strip, attributes, indexBufferData2);
 		System.out.println("buffers \n " + buffers.toString());
